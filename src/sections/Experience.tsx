@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 interface CounterProps {
   end: number;
@@ -63,6 +63,14 @@ const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-20%' });
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -20]);
+
   return (
     <section
       ref={sectionRef}
@@ -73,6 +81,7 @@ const Experience = () => {
         {stats.map((stat, index) => (
           <motion.div
             key={index}
+            style={{ y: index % 2 === 0 ? y1 : y2 }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{

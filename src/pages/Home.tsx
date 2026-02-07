@@ -7,12 +7,13 @@ import ContactCTA from '../sections/ContactCTA';
 
 interface HomeProps {
     onOpenContact: () => void;
+    startHeroAnimation?: boolean;
 }
 
-const Home = ({ onOpenContact }: HomeProps) => {
+const Home = ({ onOpenContact, startHeroAnimation }: HomeProps) => {
     return (
         <main className="relative">
-            <Hero />
+            <Hero startAnimation={startHeroAnimation} />
             <Tagline />
             <About />
             <Experience />

@@ -12,6 +12,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showHeroAnimation, setShowHeroAnimation] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -26,19 +27,23 @@ function App() {
   return (
     <>
       {/* Loading Screen */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => setShowHeroAnimation(true)}>
         {isLoading && (
           <motion.div
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            exit={{
+              y: "-100%",
+              transition: {
+                duration: 0.8,
+                ease: [0.76, 0, 0.24, 1] // Premium ease
+              }
+            }}
             className="fixed inset-0 z-[300] bg-dark flex items-center justify-center"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
               className="text-center"
             >
               <svg
@@ -83,7 +88,7 @@ function App() {
       {/* Main Content with Page Transitions */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/" element={<Home startHeroAnimation={showHeroAnimation} onOpenContact={() => setIsContactOpen(true)} />} />
           <Route path="/experience/:slug" element={<ExperienceDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>

@@ -97,10 +97,10 @@ const Hero = ({ startAnimation = true }: HeroProps) => {
         animate={startAnimation ? "visible" : "hidden"}
       >
         {/* Main Headline */}
-        <div className="relative text-center">
+        <div className="relative flex flex-col items-center justify-center z-20">
           <motion.h1
             variants={headingVariants}
-            className="text-hero text-light font-bold tracking-tighter"
+            className="text-hero text-light font-bold tracking-tighter leading-[0.9] md:leading-[0.85]"
           >
             Fairoz,
           </motion.h1>
@@ -108,7 +108,7 @@ const Hero = ({ startAnimation = true }: HeroProps) => {
           {/* Script Name */}
           <motion.span
             variants={headingVariants}
-            className="absolute -bottom-4 right-0 md:right-8 text-script text-3xl md:text-5xl lg:text-6xl text-light/90 pb-[140px]"
+            className="text-script text-3xl md:text-5xl lg:text-6xl text-light/90 mt-2 md:mt-4 block"
           >
             FAISAL
           </motion.span>

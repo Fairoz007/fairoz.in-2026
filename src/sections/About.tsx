@@ -17,7 +17,7 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative min-h-screen bg-light py-20 md:py-32 overflow-hidden"
+      className="relative min-h-screen bg-light py-12 md:py-32 overflow-hidden"
     >
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -39,7 +39,10 @@ const About = () => {
               <img
                 src="/images/about-portrait.png"
                 alt="Fairoz Faisal - System, Cloud & Security Engineer"
+                width={800}
+                height={1000}
                 className="w-full h-full object-cover grayscale"
+                loading="lazy"
               />
             </motion.div>
           </motion.div>

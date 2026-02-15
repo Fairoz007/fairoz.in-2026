@@ -92,13 +92,13 @@ const Experience = () => {
             className={`${index > 0 ? 'mt-16 md:mt-24' : ''}`}
           >
             {/* Main Number */}
-            <div className="flex flex-wrap items-baseline justify-center gap-x-4">
+            <div className="flex flex-wrap items-baseline justify-center gap-x-2 md:gap-x-4 max-w-full px-2">
               {stat.label === 'OVER' && (
-                <span className="text-display text-light/80 font-bold">
+                <span className="text-display text-light/80 font-bold shrink-0">
                   OVER
                 </span>
               )}
-              <span className="text-hero text-light font-bold tracking-tighter">
+              <span className="text-hero text-light font-bold tracking-tighter shrink-0">
                 <Counter
                   end={stat.number}
                   suffix={stat.suffix}
@@ -108,9 +108,11 @@ const Experience = () => {
             </div>
 
             {/* Secondary Text */}
-            <div className="text-display text-light/80 font-bold -mt-2 md:-mt-4">
+            <div className="text-display text-light/80 font-bold -mt-2 md:-mt-4 break-words px-2 relative z-10">
               {stat.label !== 'OVER' && stat.label}
-              {stat.label2 && stat.label2}
+              {stat.label2 && (
+                <span className="block md:inline">{stat.label2}</span>
+              )}
             </div>
 
             {/* Script Accent */}

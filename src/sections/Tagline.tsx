@@ -51,7 +51,7 @@ const Tagline = () => {
           {/* That Work - Script, overlapping */}
           <motion.div
             variants={wordVariants}
-            className="w-full -mt-4 md:-mt-8 ml-8 md:ml-24"
+            className="w-full -mt-4 md:-mt-8 pl-8 md:pl-24"
           >
             <span className="text-script text-4xl md:text-6xl lg:text-7xl text-dark/90">
               That Scale
@@ -81,7 +81,7 @@ const Tagline = () => {
           {/* Competition - Script, flowing underneath */}
           <motion.div
             variants={wordVariants}
-            className="w-full text-right -mt-4 md:-mt-8 mr-8 md:mr-24"
+            className="w-full text-right -mt-4 md:-mt-8 pr-8 md:pr-24"
           >
             <span className="text-script text-4xl md:text-6xl lg:text-7xl text-dark/90">
               Enterprise

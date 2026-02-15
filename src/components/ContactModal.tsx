@@ -101,7 +101,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             </button>
 
             {/* Form Side */}
-            <div className="flex-1 p-8 md:p-12 lg:p-16">
+            <div className="flex-1 p-8 md:p-12 lg:p-16 overflow-y-auto">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

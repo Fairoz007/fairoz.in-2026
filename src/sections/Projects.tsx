@@ -82,7 +82,10 @@ const ProjectCard = ({ experience, index }: ProjectCardProps) => {
             <img
               src={experience.image}
               alt={experience.title}
+              width={1600}
+              height={900}
               className={`project-image w-full h-full object-cover transition-all duration-700 ${isHovered ? 'grayscale-0' : 'grayscale'}`}
+              loading="lazy"
             />
           </motion.div>
 

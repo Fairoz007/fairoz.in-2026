@@ -100,7 +100,7 @@ const Hero = ({ startAnimation = true }: HeroProps) => {
         <div className="relative flex flex-col items-center justify-center z-20">
           <motion.h1
             variants={headingVariants}
-            className="text-hero text-light font-bold tracking-tighter leading-[0.9] md:leading-[0.85]"
+            className="text-hero text-light font-bold tracking-tighter leading-[0.9] md:leading-[0.85] break-words max-w-full"
           >
             Fairoz,
           </motion.h1>

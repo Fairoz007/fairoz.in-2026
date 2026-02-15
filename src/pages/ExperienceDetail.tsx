@@ -194,6 +194,7 @@ const ExperienceDetail = () => {
                                             src={img}
                                             alt="Gallery"
                                             className="rounded-lg shadow-md hover:scale-[1.02] transition-transform duration-300"
+                                            loading="lazy"
                                         />
                                     ))}
                                 </div>
@@ -210,7 +211,7 @@ const ExperienceDetail = () => {
                     {prevExperience ? (
                         <Link
                             to={`/experience/${prevExperience.slug}`}
-                            className="p-12 border-r border-dark/5 flex flex-col items-start gap-2 hover:bg-dark/5 transition-colors group text-left"
+                            className="p-6 md:p-12 border-r border-dark/5 flex flex-col items-start gap-2 hover:bg-dark/5 transition-colors group text-left"
                         >
                             <span className="text-xs uppercase tracking-widest text-dark/40 flex items-center gap-2">
                                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -225,7 +226,7 @@ const ExperienceDetail = () => {
                     {nextExperience ? (
                         <Link
                             to={`/experience/${nextExperience.slug}`}
-                            className="p-12 flex flex-col items-end gap-2 hover:bg-dark/5 transition-colors group text-right"
+                            className="p-6 md:p-12 flex flex-col items-end gap-2 hover:bg-dark/5 transition-colors group text-right"
                         >
                             <span className="text-xs uppercase tracking-widest text-dark/40 flex items-center gap-2">
                                 Next

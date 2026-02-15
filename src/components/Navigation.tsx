@@ -77,7 +77,7 @@ const Navigation = ({ onMenuOpen }: NavigationProps) => {
           {/* Hamburger Menu Button */}
           <motion.button
             onClick={onMenuOpen}
-            className={`relative z-10 flex flex-col items-end gap-1.5 p-2 transition-colors duration-300 ${isScrolled ? 'text-dark' : 'text-light'
+            className={`lg:hidden relative z-10 flex flex-col items-end gap-1.5 p-2 transition-colors duration-300 ${isScrolled ? 'text-dark' : 'text-light'
               }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

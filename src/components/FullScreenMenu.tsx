@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Instagram, Linkedin } from 'lucide-react';
+import lenis from '../smoothScroll';
 
 interface FullScreenMenuProps {
   isOpen: boolean;
@@ -30,7 +31,12 @@ const FullScreenMenu = ({ isOpen, onClose }: FullScreenMenuProps) => {
     onClose();
     setTimeout(() => {
       const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      if (element) {
+        lenis.scrollTo(element, {
+          offset: -80,
+          duration: 1.2,
+        });
+      }
     }, 300);
   };
 

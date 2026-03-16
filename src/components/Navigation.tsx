@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { motion } from 'framer-motion';
+import lenis from '../smoothScroll';
 
 interface NavigationProps {
   onMenuOpen: () => void;
@@ -24,6 +25,17 @@ const Navigation = ({ onMenuOpen }: NavigationProps) => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      lenis.scrollTo(target, {
+        offset: -80,
+        duration: 1.2,
+      });
+    }
+  };
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -37,6 +49,7 @@ const Navigation = ({ onMenuOpen }: NavigationProps) => {
           {/* Logo */}
           <motion.a
             href="#hero"
+            onClick={(event) => handleNavClick(event, '#hero')}
             className="relative z-10"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -63,6 +76,7 @@ const Navigation = ({ onMenuOpen }: NavigationProps) => {
               <motion.a
                 key={link.name}
                 href={link.href}
+                onClick={(event) => handleNavClick(event, link.href)}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 * index }}

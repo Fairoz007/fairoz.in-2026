@@ -119,7 +119,7 @@ const Hero = ({ startAnimation = true }: HeroProps) => {
           variants={subtitleVariants}
           className="mt-16 text-label text-light/70 tracking-widest text-center"
         >
-          DevOps & Software Developer
+          Assistant Director of Information Technology
         </motion.p>
       </motion.div>
 

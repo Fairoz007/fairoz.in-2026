@@ -30,7 +30,7 @@ const FullScreenMenu = ({ isOpen, onClose }: FullScreenMenuProps) => {
   const handleLinkClick = (href: string) => {
     onClose();
     setTimeout(() => {
-      const element = document.querySelector(href);
+      const element = document.querySelector<HTMLElement>(href);
       if (element) {
         lenis.scrollTo(element, {
           offset: -80,

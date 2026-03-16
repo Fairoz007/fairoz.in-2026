@@ -1,4 +1,5 @@
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, useEffect } from 'react';
+import type { MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import lenis from '../smoothScroll';
 
@@ -27,7 +28,7 @@ const Navigation = ({ onMenuOpen }: NavigationProps) => {
 
   const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
-    const target = document.querySelector(href);
+    const target = document.querySelector<HTMLElement>(href);
     if (target) {
       lenis.scrollTo(target, {
         offset: -80,

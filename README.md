@@ -18,7 +18,7 @@ This application is engineered to provide a seamless user experience with smooth
 - **Dynamic Routing**: Client-side routing with React Router DOM v7, including detailed experience pages.
 - **Form Handling**: Robust form validation using React Hook Form and Zod.
 - **Component System**: Modular UI architecture utilizing Radix UI primitives for accessibility.
-
+v            
 ## 🛠️ Tech Stack
 
 ### Core

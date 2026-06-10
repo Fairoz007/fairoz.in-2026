@@ -54,6 +54,15 @@ module.exports = {
           darker: '#a0a0a0',
         },
         cream: '#e8e8e8',
+        fintech: {
+          black: '#050a08',
+          dark: '#0a1210',
+          card: '#0f1a17',
+          emerald: '#10b981',
+          teal: '#14b8a6',
+          glow: '#34d399',
+          muted: '#94a3b8',
+        },
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -107,6 +116,17 @@ module.exports = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        marquee: {
+          to: { transform: "translateX(-50%)" },
+        },
+        "marquee-reverse": {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "loading-slide": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -118,6 +138,9 @@ module.exports = {
         "scale-in": "scale-in 0.6s ease-out forwards",
         "clip-reveal": "clip-reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards",
         "float": "float 3s ease-in-out infinite",
+        marquee: "marquee var(--duration, 30s) linear infinite",
+        "marquee-reverse": "marquee-reverse var(--duration, 30s) linear infinite",
+        loading: "loading-slide 2s ease-in-out infinite",
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

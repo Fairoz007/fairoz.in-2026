@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import FullScreenMenu from './components/FullScreenMenu';
 import ContactModal from './components/ContactModal';
 import Home from './pages/Home';
+import ExperiencePage from './pages/ExperiencePage';
 import ExperienceDetail from './pages/ExperienceDetail';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
@@ -89,6 +90,7 @@ function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home startHeroAnimation={showHeroAnimation} onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/experience/:slug" element={<ExperienceDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>

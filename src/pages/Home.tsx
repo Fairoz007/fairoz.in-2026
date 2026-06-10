@@ -3,6 +3,7 @@ import Tagline from '../sections/Tagline';
 import About from '../sections/About';
 import Experience from '../sections/Experience';
 import Projects from '../sections/Projects';
+import TechMarquee from '../sections/TechMarquee';
 import ContactCTA from '../sections/ContactCTA';
 
 interface HomeProps {
@@ -18,6 +19,7 @@ const Home = ({ onOpenContact, startHeroAnimation }: HomeProps) => {
             <About />
             <Experience />
             <Projects />
+            <TechMarquee />
             <ContactCTA onOpenContact={onOpenContact} />
         </main>
     );

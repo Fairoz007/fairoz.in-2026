@@ -25,10 +25,10 @@ export const experiences: Experience[] = [
         title: 'GLOBAL',
         titleScript: 'Education',
         companyName: 'Global Education Services',
-        role: 'DevOps & Software Developer',
+        role: 'Director of Information Technology',
         duration: 'Jan 2026 – Present',
         image: '/images/GES.png',
-        description: 'Leading DevOps and software development initiatives in Oman to support scalable, secure, and highly available applications.',
+        description: 'Leading information technology initiatives in Oman to support scalable, secure, and highly available systems across the organization.',
         responsibilities: [
             'Designing, developing, and maintaining websites and internal web applications, including frontend, backend, and deployment architecture.',
             'Managing production and staging infrastructure for websites and applications, covering hosting, DNS, SSL, backups, and uptime monitoring.',

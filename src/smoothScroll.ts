@@ -1,18 +1,22 @@
 import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Initialize Lenis smooth scrolling
+gsap.registerPlugin(ScrollTrigger);
+
 const lenis = new Lenis({
   lerp: 0.1,
   duration: 1.2,
   smoothWheel: true,
 });
 
-function raf(time: number) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+lenis.on('scroll', ScrollTrigger.update);
 
-requestAnimationFrame(raf);
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
 
 export default lenis;
 

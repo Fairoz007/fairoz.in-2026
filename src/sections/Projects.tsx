@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { experiences } from '../data/experiences';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import ProfessionalExperienceScroll from './ProfessionalExperienceScroll';
 
 interface ProjectCardProps {
   experience: typeof experiences[0];
@@ -158,9 +159,21 @@ const ProjectCard = ({ experience, index }: ProjectCardProps) => {
   );
 };
 
+const DESKTOP_BREAKPOINT = 768;
+
 const Projects = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: '-100px' });
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
+    const update = () => setIsDesktop(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
 
   return (
     <section id="work" className="relative bg-light">
@@ -188,12 +201,15 @@ const Projects = () => {
         </motion.h2>
       </div>
 
-      {/* Project Cards */}
-      <div className="space-y-0">
-        {experiences.map((experience, index) => (
-          <ProjectCard key={experience.id} experience={experience} index={index} />
-        ))}
-      </div>
+      {isDesktop === true && <ProfessionalExperienceScroll />}
+
+      {isDesktop === false && (
+        <div className="space-y-0">
+          {experiences.map((experience, index) => (
+            <ProjectCard key={experience.id} experience={experience} index={index} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

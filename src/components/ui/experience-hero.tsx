@@ -23,6 +23,7 @@ export interface ExperienceHeroProps {
   ctaLabel?: string;
   onCtaClick?: () => void;
   commandCells: CommandCell[];
+  headerAction?: React.ReactNode;
 }
 
 const LiquidBackground = () => {
@@ -98,6 +99,7 @@ export function ExperienceHero({
   ctaLabel = 'Explore Role',
   onCtaClick,
   commandCells,
+  headerAction,
 }: ExperienceHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const revealRef = useRef<HTMLDivElement>(null);
@@ -155,7 +157,7 @@ export function ExperienceHero({
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen w-full bg-[#020202] flex flex-col selection:bg-white selection:text-black overflow-hidden"
+      className="relative min-h-[100dvh] w-full bg-[#020202] flex flex-col selection:bg-white selection:text-black overflow-hidden"
     >
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Canvas camera={{ position: [0, 0, 60], fov: 35 }}>
@@ -168,23 +170,27 @@ export function ExperienceHero({
 
       <div
         ref={revealRef}
-        className="relative z-10 w-full flex flex-col md:flex-row p-8 md:p-14 lg:p-20 min-h-screen items-center md:items-stretch gap-10"
+        className="relative z-10 w-full flex flex-col md:flex-row px-4 sm:px-6 md:px-12 lg:px-20 pt-24 md:pt-28 pb-10 md:pb-14 lg:pb-20 min-h-[100dvh] items-stretch gap-8 md:gap-10 lg:gap-14"
       >
-        <div className="flex-1 min-w-0 flex flex-col justify-between pb-12 md:pb-8 w-full">
-          <div className="flex items-center gap-3">
-            <div className="relative w-2.5 h-2.5 bg-white rounded-full">
-              <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-30" />
+        <div className="flex-1 min-w-0 flex flex-col gap-8 md:gap-10 lg:justify-between w-full">
+          <div className="space-y-5 md:space-y-6">
+            {headerAction && <div>{headerAction}</div>}
+
+            <div className="flex items-center gap-3">
+              <div className="relative w-2.5 h-2.5 bg-white rounded-full shrink-0">
+                <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-30" />
+              </div>
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white tracking-[0.15em] sm:tracking-[0.2em] uppercase break-words">
+                {brandLabel}
+              </span>
             </div>
-            <span className="font-mono text-[11px] font-bold text-white tracking-[0.2em] uppercase">
-              {brandLabel}
-            </span>
           </div>
 
-          <div className="max-w-4xl lg:-translate-y-8 pr-12">
-            <h1 className="text-[clamp(3.5rem,9.5vw,11.5rem)] font-black leading-[0.87] tracking-tighter text-white uppercase italic-none">
+          <div className="max-w-4xl lg:-translate-y-6">
+            <h1 className="text-[clamp(2.5rem,11vw,11.5rem)] font-black leading-[0.9] sm:leading-[0.87] tracking-tighter text-white uppercase">
               {title} <br /> <span className="text-outline">{titleOutline}</span>
             </h1>
-            <p className="mt-8 font-mono text-[11px] text-white/40 uppercase tracking-[0.35em] max-w-sm leading-relaxed">
+            <p className="mt-5 sm:mt-8 font-mono text-[10px] sm:text-[11px] text-white/40 uppercase tracking-[0.2em] sm:tracking-[0.35em] max-w-md leading-relaxed">
               {description}
             </p>
           </div>
@@ -193,33 +199,33 @@ export function ExperienceHero({
             ref={ctaRef}
             type="button"
             onClick={onCtaClick}
-            className="w-fit flex items-center gap-6 group lg:-translate-y-20"
+            className="w-fit flex items-center gap-4 sm:gap-6 group mt-2 lg:-translate-y-12"
           >
-            <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white transition-all duration-500 overflow-hidden">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white transition-all duration-500 overflow-hidden shrink-0">
               <ArrowUpRight
                 size={18}
                 strokeWidth={2.5}
                 className="group-hover:stroke-black stroke-white transition-colors duration-500"
               />
             </div>
-            <span className="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
+            <span className="font-mono text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-[0.15em] sm:tracking-[0.2em]">
               {ctaLabel}
             </span>
           </button>
         </div>
 
-        <div className="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col gap-4 justify-center z-20">
+        <div className="w-full md:w-72 lg:w-96 flex-shrink-0 flex flex-col gap-3 sm:gap-4 justify-start md:justify-center z-20">
           {commandCells.map((item) => (
-            <div key={item.id} className="command-cell glass-panel p-6 sm:p-7 block opacity-1">
+            <div key={item.id} className="command-cell glass-panel p-5 sm:p-6 md:p-7 block">
               <span className="font-mono text-[9px] text-white/25 uppercase tracking-widest block mb-3">
                 {item.id} // {item.title}
               </span>
               {item.type === 'progress' ? (
-                <div className="flex justify-between items-end mt-2">
-                  <h4 className="text-2xl sm:text-3xl font-bold text-white tracking-tighter">
+                <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-end mt-2">
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tighter break-words">
                     {item.val}
                   </h4>
-                  <div className="h-[2px] w-20 bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-[2px] w-full sm:w-20 bg-white/5 rounded-full overflow-hidden shrink-0">
                     <div
                       className="h-full bg-white animate-loading"
                       style={{ width: `${item.progress ?? 60}%` }}
@@ -227,12 +233,12 @@ export function ExperienceHero({
                   </div>
                 </div>
               ) : item.type === 'data' ? (
-                <div className="mt-4 flex flex-col gap-3">
+                <div className="mt-3 sm:mt-4 flex flex-col gap-3">
                   {item.dataRows?.map((row, rowIndex) => (
                     <React.Fragment key={row.label}>
-                      <div className="flex justify-between text-[10px] font-mono text-white/50">
-                        <span>{row.label}</span>
-                        <span>{row.value}</span>
+                      <div className="flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-start text-[10px] font-mono text-white/50">
+                        <span className="shrink-0">{row.label}</span>
+                        <span className="sm:text-right break-words">{row.value}</span>
                       </div>
                       {rowIndex < (item.dataRows?.length ?? 0) - 1 && (
                         <div className="h-px w-full bg-white/5" />
@@ -241,7 +247,7 @@ export function ExperienceHero({
                   ))}
                 </div>
               ) : (
-                <h3 className="text-sm font-medium text-white/70 mt-3 leading-snug">
+                <h3 className="text-sm font-medium text-white/70 mt-2 sm:mt-3 leading-snug">
                   {item.textContent}
                 </h3>
               )}

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -12,10 +11,6 @@ const ExperienceDetail = () => {
 
   const experienceIndex = experiences.findIndex((e) => e.slug === slug);
   const experience = experiences[experienceIndex];
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
 
   if (!experience) {
     return (
@@ -41,19 +36,19 @@ const ExperienceDetail = () => {
     }
   };
 
+  const backLink = (
+    <Link
+      to="/"
+      className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/70 hover:text-white transition-colors group"
+    >
+      <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform shrink-0" />
+      Back
+    </Link>
+  );
+
   return (
     <div className="dark min-h-screen bg-[#020202] selection:bg-white selection:text-black">
       <main className="relative w-full overflow-x-hidden">
-        <div className="fixed top-24 left-0 z-40 px-6 md:px-12 pointer-events-none">
-          <Link
-            to="/"
-            className="pointer-events-auto inline-flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white transition-colors group"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back
-          </Link>
-        </div>
-
         <ExperienceHero
           brandLabel={experience.companyName.toUpperCase()}
           title={experience.title}
@@ -62,20 +57,21 @@ const ExperienceDetail = () => {
           ctaLabel="Explore Role"
           onCtaClick={scrollToContent}
           commandCells={buildCommandCells(experience)}
+          headerAction={backLink}
         />
 
         <section
           id="experience-content"
-          className="relative z-10 py-16 md:py-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto"
+          className="relative z-10 py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 max-w-7xl mx-auto"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            <div className="lg:col-span-4 space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
+            <div className="lg:col-span-4 space-y-6 sm:space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="glass-panel p-8"
+                className="glass-panel p-5 sm:p-6 md:p-8"
               >
                 <h3 className="font-mono text-[9px] text-white/25 uppercase tracking-widest mb-6">
                   004 // Overview
@@ -88,7 +84,7 @@ const ExperienceDetail = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="glass-panel p-8"
+                className="glass-panel p-5 sm:p-6 md:p-8"
               >
                 <h3 className="font-mono text-[9px] text-white/25 uppercase tracking-widest mb-6">
                   005 // Tech Stack
@@ -138,15 +134,17 @@ const ExperienceDetail = () => {
               </motion.div>
             </div>
 
-            <div className="lg:col-span-8 space-y-8">
+            <div className="lg:col-span-8 space-y-6 sm:space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="glass-panel p-8 md:p-10"
+                className="glass-panel p-5 sm:p-6 md:p-8 lg:p-10"
               >
-                <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Responsibilities</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-white">
+                  Responsibilities
+                </h2>
                 <ul className="space-y-4">
                   {experience.responsibilities.map((item, index) => (
                     <li key={index} className="flex gap-4 items-start group">
@@ -204,34 +202,34 @@ const ExperienceDetail = () => {
         </section>
 
         <section className="relative z-10 border-t border-white/10">
-          <div className="max-w-7xl mx-auto grid grid-cols-2">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2">
             {prevExperience ? (
               <Link
                 to={`/experience/${prevExperience.slug}`}
-                className="p-6 md:p-12 border-r border-white/10 flex flex-col items-start gap-2 hover:bg-white/5 transition-colors group text-left"
+                className="p-5 sm:p-6 md:p-12 sm:border-r border-white/10 flex flex-col items-start gap-2 hover:bg-white/5 transition-colors group text-left border-b sm:border-b-0 border-white/10"
               >
                 <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 flex items-center gap-2">
                   <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
                   Previous
                 </span>
-                <span className="text-xl md:text-2xl font-bold text-white">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold text-white break-words">
                   {prevExperience.companyName}
                 </span>
               </Link>
             ) : (
-              <div />
+              <div className="hidden sm:block" />
             )}
 
             {nextExperience ? (
               <Link
                 to={`/experience/${nextExperience.slug}`}
-                className="p-6 md:p-12 flex flex-col items-end gap-2 hover:bg-white/5 transition-colors group text-right"
+                className="p-5 sm:p-6 md:p-12 flex flex-col items-start sm:items-end gap-2 hover:bg-white/5 transition-colors group text-left sm:text-right"
               >
                 <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 flex items-center gap-2">
                   Next
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </span>
-                <span className="text-xl md:text-2xl font-bold text-white">
+                <span className="text-lg sm:text-xl md:text-2xl font-bold text-white break-words">
                   {nextExperience.companyName}
                 </span>
               </Link>

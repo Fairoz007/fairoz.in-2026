@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import ExperiencePage from './pages/ExperiencePage';
 import ExperienceDetail from './pages/ExperienceDetail';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,6 +77,8 @@ function App() {
 
       {/* Grain Overlay */}
       <div className="grain-overlay" />
+
+      <ScrollToTop />
 
       {/* Navigation */}
       <Navigation onMenuOpen={() => setIsMenuOpen(true)} />

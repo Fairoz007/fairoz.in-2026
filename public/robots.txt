@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Allow AI Search Engines (GEO optimization)
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://fairoz.in/sitemap.xml
